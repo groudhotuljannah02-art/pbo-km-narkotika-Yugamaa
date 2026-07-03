@@ -33,7 +33,6 @@ public class KnowledgeController {
             int vonisHukuman = Integer.parseInt(data[10]);
             double vonisDenda = Double.parseDouble(data[11]);
 
-            // ===== Validasi aturan bisnis =====
             if (repository.cariByNomor(nomorPerkara) != null) {
                 throw new ValidasiException("Nomor perkara sudah terdaftar!");
             }
@@ -67,11 +66,27 @@ public class KnowledgeController {
     }
 
     public ArrayList<Putusan> cariPutusan(String keyword, String mode) {
-        return new ArrayList<>();
+        if ("nomor".equalsIgnoreCase(mode)) {
+            ArrayList<Putusan> hasil = new ArrayList<>();
+            Putusan p = repository.cariByNomor(keyword);
+            if (p != null) {
+                hasil.add(p);
+            }
+            return hasil;
+        } else {
+            return repository.cariByNama(keyword);
+        }
     }
 
     public ArrayList<Putusan> filterPutusan(String kriteria, String nilai) {
-        return new ArrayList<>();
+        switch (kriteria.toLowerCase()) {
+            case "jenis":
+                return repository.filterByJenis(nilai);
+            case "pengadilan":
+                return repository.filterByPengadilan(nilai);
+            default:
+                return new ArrayList<>();
+        }
     }
 
     public boolean hapusPutusan(String nomor) {
