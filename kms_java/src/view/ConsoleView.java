@@ -32,10 +32,7 @@ public class ConsoleView {
         System.out.println(">> " + pesan);
     }
 
-    /**
-     * Menampilkan daftar putusan dalam format tabel.
-     * Dipakai ulang untuk menu "Tampilkan Semua", hasil pencarian, dan hasil filter.
-     */
+
     public void tampilkanDaftarPutusan(ArrayList<Putusan> list) {
         if (list == null || list.isEmpty()) {
             System.out.println("Tidak ada data untuk ditampilkan.");
