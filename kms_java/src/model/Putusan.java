@@ -11,8 +11,11 @@ public class Putusan extends Perkara {
     private int vonisHukuman; // bulan
     private double vonisDenda; // rupiah
 
+    private static int jumlahDibuat = 0;
+
     public Putusan() {
         super();
+        jumlahDibuat++;
     }
 
     public Putusan(String nomorPerkara, String pengadilan, String tanggalPutusan, String namaHakim,
@@ -27,6 +30,7 @@ public class Putusan extends Perkara {
         this.peranTerdakwa = peranTerdakwa;
         this.vonisHukuman = vonisHukuman;
         this.vonisDenda = vonisDenda;
+        jumlahDibuat++;
     }
 
     public String getNamaTerdakwa() {
@@ -93,9 +97,13 @@ public class Putusan extends Perkara {
         this.vonisDenda = vonisDenda;
     }
 
+    public static int getJumlahDibuat() {
+        return jumlahDibuat;
+    }
+
     @Override
     public String getKategoriHukuman() {
+
         return null;
     }
 }
-
