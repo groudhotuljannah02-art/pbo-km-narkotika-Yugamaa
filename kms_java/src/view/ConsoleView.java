@@ -1,6 +1,7 @@
 package view;
 
 import model.Putusan;
+import model.StatistikPutusan;
 import util.InputHandler;
 
 import java.util.ArrayList;
@@ -53,5 +54,9 @@ public class ConsoleView {
             return;
         }
         p.tampilkan(true);
+    }
+
+    public void tampilkanStatistik(StatistikPutusan stat) {
+        stat.tampilkanLaporan();
     }
 }
