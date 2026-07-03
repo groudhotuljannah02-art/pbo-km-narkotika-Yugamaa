@@ -33,6 +33,45 @@ public class KnowledgeRepository {
         return hasil;
     }
 
+    public ArrayList<Putusan> filterByJenis(String jenis) {
+        ArrayList<Putusan> hasil = new ArrayList<>();
+        for (Putusan p : daftarPutusan) {
+            if (p.getJenisNarkotika().equalsIgnoreCase(jenis)) {
+                hasil.add(p);
+            }
+        }
+        return hasil;
+    }
+
+    public ArrayList<Putusan> filterByPengadilan(String pengadilan) {
+        ArrayList<Putusan> hasil = new ArrayList<>();
+        for (Putusan p : daftarPutusan) {
+            if (p.getPengadilan().toLowerCase().contains(pengadilan.toLowerCase())) {
+                hasil.add(p);
+            }
+        }
+        return hasil;
+    }
+
+    public ArrayList<Putusan> filterByRentangVonis(int min, int max) {
+        ArrayList<Putusan> hasil = new ArrayList<>();
+        for (Putusan p : daftarPutusan) {
+            if (p.getVonisHukuman() >= min && p.getVonisHukuman() <= max) {
+                hasil.add(p);
+            }
+        }
+        return hasil;
+    }
+
+    public boolean hapus(String nomor) {
+        Putusan p = cariByNomor(nomor);
+        if (p != null) {
+            daftarPutusan.remove(p);
+            return true;
+        }
+        return false;
+    }
+
     public ArrayList<Putusan> getDaftarSemua() {
         return daftarPutusan;
     }
