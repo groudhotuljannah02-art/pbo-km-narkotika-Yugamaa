@@ -90,11 +90,17 @@ public class KnowledgeController {
     }
 
     public boolean hapusPutusan(String nomor) {
-        return false;
+        boolean sukses = repository.hapus(nomor);
+        if (sukses) {
+            view.tampilkanPesan("Data dengan nomor " + nomor + " berhasil dihapus.");
+        } else {
+            view.tampilkanPesan("Data dengan nomor " + nomor + " tidak ditemukan.");
+        }
+        return sukses;
     }
 
     public StatistikPutusan getStatistik() {
-        return null;
+        return new StatistikPutusan(repository.getDaftarSemua());
     }
 
     public void tampilkanSemua() {
