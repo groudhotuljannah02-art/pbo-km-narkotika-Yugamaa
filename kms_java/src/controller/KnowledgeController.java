@@ -3,6 +3,7 @@ package controller;
 import model.KnowledgeRepository;
 import model.Putusan;
 import model.StatistikPutusan;
+import util.ValidasiException;
 import view.ConsoleView;
 
 import java.util.ArrayList;
@@ -32,6 +33,20 @@ public class KnowledgeController {
             int vonisHukuman = Integer.parseInt(data[10]);
             double vonisDenda = Double.parseDouble(data[11]);
 
+            // ===== Validasi aturan bisnis =====
+            if (repository.cariByNomor(nomorPerkara) != null) {
+                throw new ValidasiException("Nomor perkara sudah terdaftar!");
+            }
+            if (beratBarangBukti <= 0) {
+                throw new ValidasiException("Berat barang bukti harus lebih dari 0!");
+            }
+            if (umurTerdakwa <= 0) {
+                throw new ValidasiException("Umur terdakwa tidak valid!");
+            }
+            if (vonisHukuman < 0) {
+                throw new ValidasiException("Vonis hukuman tidak boleh negatif!");
+            }
+
             Putusan p = new Putusan(nomorPerkara, pengadilan, tanggalPutusan, namaHakim,
                     namaTerdakwa, umurTerdakwa, jenisNarkotika, beratBarangBukti,
                     pasalDilanggar, peranTerdakwa, vonisHukuman, vonisDenda);
@@ -41,6 +56,9 @@ public class KnowledgeController {
 
         } catch (NumberFormatException e) {
             view.tampilkanPesan("Gagal menambah data: format angka tidak valid.");
+            return false;
+        } catch (ValidasiException e) {
+            view.tampilkanPesan("Gagal menambah data: " + e.getMessage());
             return false;
         } catch (ArrayIndexOutOfBoundsException e) {
             view.tampilkanPesan("Gagal menambah data: data tidak lengkap.");
