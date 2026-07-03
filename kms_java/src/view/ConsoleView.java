@@ -32,7 +32,10 @@ public class ConsoleView {
         System.out.println(">> " + pesan);
     }
 
-
+    /**
+     * Menampilkan daftar putusan dalam format tabel.
+     * Dipakai ulang untuk menu "Tampilkan Semua", hasil pencarian, dan hasil filter.
+     */
     public void tampilkanDaftarPutusan(ArrayList<Putusan> list) {
         if (list == null || list.isEmpty()) {
             System.out.println("Tidak ada data untuk ditampilkan.");
@@ -49,7 +52,13 @@ public class ConsoleView {
         System.out.println("Total: " + list.size() + " data");
     }
 
-
+    public void tampilkanDetail(Putusan p) {
+        if (p == null) {
+            System.out.println("Data tidak ditemukan.");
+            return;
+        }
+        p.tampilkan(true);
+    }
 
     public void tampilkanStatistik(StatistikPutusan stat) {
         stat.tampilkanLaporan();
