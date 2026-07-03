@@ -46,6 +46,9 @@ public class Putusan extends Perkara {
     }
 
     public void setUmurTerdakwa(int umurTerdakwa) {
+        if (umurTerdakwa < 0) {
+            throw new IllegalArgumentException("Umur tidak boleh negatif");
+        }
         this.umurTerdakwa = umurTerdakwa;
     }
 
@@ -62,6 +65,9 @@ public class Putusan extends Perkara {
     }
 
     public void setBeratBarangBukti(double beratBarangBukti) {
+        if (beratBarangBukti <= 0) {
+            throw new IllegalArgumentException("Berat barang bukti harus lebih dari 0");
+        }
         this.beratBarangBukti = beratBarangBukti;
     }
 
@@ -86,6 +92,9 @@ public class Putusan extends Perkara {
     }
 
     public void setVonisHukuman(int vonisHukuman) {
+        if (vonisHukuman < 0) {
+            throw new IllegalArgumentException("Vonis hukuman tidak boleh negatif");
+        }
         this.vonisHukuman = vonisHukuman;
     }
 
@@ -94,6 +103,9 @@ public class Putusan extends Perkara {
     }
 
     public void setVonisDenda(double vonisDenda) {
+        if (vonisDenda < 0) {
+            throw new IllegalArgumentException("Denda tidak boleh negatif");
+        }
         this.vonisDenda = vonisDenda;
     }
 
@@ -103,7 +115,7 @@ public class Putusan extends Perkara {
 
     @Override
     public String getKategoriHukuman() {
-
+        // TODO: logika kategori (commit berikutnya)
         return null;
     }
 }
