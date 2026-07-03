@@ -1,7 +1,9 @@
 package view;
 
+import model.Putusan;
 import util.InputHandler;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsoleView {
@@ -27,5 +29,21 @@ public class ConsoleView {
 
     public void tampilkanPesan(String pesan) {
         System.out.println(">> " + pesan);
+    }
+
+    public void tampilkanDaftarPutusan(ArrayList<Putusan> list) {
+        if (list == null || list.isEmpty()) {
+            System.out.println("Tidak ada data untuk ditampilkan.");
+            return;
+        }
+        System.out.println("\nNo | Nomor Perkara            | Nama Terdakwa        | Jenis        | Vonis   | Denda");
+        System.out.println("---------------------------------------------------------------------------------------");
+        int no = 1;
+        for (Putusan p : list) {
+            System.out.printf("%-2d | %-24s | %-20s | %-12s | %3d bln | Rp%,.0f%n",
+                    no++, p.getNomorPerkara(), p.getNamaTerdakwa(), p.getJenisNarkotika(),
+                    p.getVonisHukuman(), p.getVonisDenda());
+        }
+        System.out.println("Total: " + list.size() + " data");
     }
 }
