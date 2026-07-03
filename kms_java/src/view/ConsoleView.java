@@ -60,14 +60,25 @@ public class ConsoleView {
         stat.tampilkanLaporan();
     }
 
-    // ===== Form input (dalam pengembangan: baru bagian data perkara) =====
-    public String[] inputFormPutusanPerkara(Scanner sc) {
+    public String[] inputFormPutusan(Scanner sc) {
         System.out.println("\n--- Form Tambah Putusan Baru ---");
         String nomorPerkara = InputHandler.validasiString("Nomor Perkara            : ", sc);
         String pengadilan = InputHandler.validasiString("Pengadilan               : ", sc);
         String tanggalPutusan = InputHandler.validasiString("Tanggal Putusan          : ", sc);
         String namaHakim = InputHandler.validasiString("Nama Hakim Ketua         : ", sc);
+        String namaTerdakwa = InputHandler.validasiString("Nama Terdakwa            : ", sc);
+        int umurTerdakwa = InputHandler.validasiInt("Umur Terdakwa            : ", sc);
+        String jenisNarkotika = InputHandler.validasiString("Jenis Narkotika          : ", sc);
+        double beratBarangBukti = InputHandler.validasiDouble("Berat Barang Bukti (gram): ", sc);
+        String pasalDilanggar = InputHandler.validasiString("Pasal Dilanggar          : ", sc);
+        String peranTerdakwa = InputHandler.validasiString("Peran Terdakwa           : ", sc);
+        int vonisHukuman = InputHandler.validasiInt("Vonis Hukuman (bulan)    : ", sc);
+        double vonisDenda = InputHandler.validasiDouble("Vonis Denda (Rp)         : ", sc);
 
-        return new String[]{nomorPerkara, pengadilan, tanggalPutusan, namaHakim};
+        return new String[]{
+                nomorPerkara, pengadilan, tanggalPutusan, namaHakim, namaTerdakwa,
+                String.valueOf(umurTerdakwa), jenisNarkotika, String.valueOf(beratBarangBukti),
+                pasalDilanggar, peranTerdakwa, String.valueOf(vonisHukuman), String.valueOf(vonisDenda)
+        };
     }
 }
