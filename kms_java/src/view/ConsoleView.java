@@ -59,4 +59,15 @@ public class ConsoleView {
     public void tampilkanStatistik(StatistikPutusan stat) {
         stat.tampilkanLaporan();
     }
+
+    // ===== Form input (dalam pengembangan: baru bagian data perkara) =====
+    public String[] inputFormPutusanPerkara(Scanner sc) {
+        System.out.println("\n--- Form Tambah Putusan Baru ---");
+        String nomorPerkara = InputHandler.validasiString("Nomor Perkara            : ", sc);
+        String pengadilan = InputHandler.validasiString("Pengadilan               : ", sc);
+        String tanggalPutusan = InputHandler.validasiString("Tanggal Putusan          : ", sc);
+        String namaHakim = InputHandler.validasiString("Nama Hakim Ketua         : ", sc);
+
+        return new String[]{nomorPerkara, pengadilan, tanggalPutusan, namaHakim};
+    }
 }
