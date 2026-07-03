@@ -49,13 +49,7 @@ public class ConsoleView {
         System.out.println("Total: " + list.size() + " data");
     }
 
-    public void tampilkanDetail(Putusan p) {
-        if (p == null) {
-            System.out.println("Data tidak ditemukan.");
-            return;
-        }
-        p.tampilkan(true);
-    }
+
 
     public void tampilkanStatistik(StatistikPutusan stat) {
         stat.tampilkanLaporan();
