@@ -89,7 +89,7 @@ Pilih menu:
 
 Video demonstrasi aplikasi yang memperlihatkan seluruh alur penggunaan sesuai ketentuan tugas dapat diakses melalui tautan berikut:
 
-**[ISI LINK VIDEO DI SINI]**
+https://youtu.be/h3NBJUYNvd4?si=CitdubRD8nZqu1l5
 
 5. Daftar Anggota Kelompok
                               
