@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Model untuk menghitung statistik ringkas dari kumpulan data Putusan.
- */
 public class StatistikPutusan {
 
     private int totalPutusan;

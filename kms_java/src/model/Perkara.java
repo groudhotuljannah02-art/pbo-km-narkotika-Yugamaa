@@ -48,11 +48,6 @@ public abstract class Perkara {
     public void setNamaHakim(String namaHakim) {
         this.namaHakim = namaHakim;
     }
-
-    /**
-     * Method abstrak: setiap jenis perkara wajib mendefinisikan
-     * kategori hukumannya sendiri (mendukung polimorfisme).
-     */
     public abstract String getKategoriHukuman();
 }
 
